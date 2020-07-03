@@ -56,6 +56,7 @@
   <link href="assets/css/style.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="assets/css/all.min.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
   <style>
     .features-icon {
@@ -139,7 +140,8 @@
           </div>
         </div>
       </section>
-      <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="img/17.jpg">
+      <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="img/17.jpg"  data-aos="fade-up" 
+       data-aos-delay="300"  data-aos-duration="1500">
         <div class="testimonials-slider pt-141 pb-141">
           <ul class="slides">
             <li>
@@ -213,7 +215,7 @@
       </section>
       <hr class="divider-w">
       <section class="module2" id="services" style="background-image: url(img/27.png);">
-        <div class="container">
+        <div class="container" ">
           <div class="row">
             <div class="col-sm-2 col-sm-offset-5">
               <div class="alt-module-subtitle"><span class="holder-w"></span>
@@ -221,7 +223,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row" >
             <div class="col-sm-8 col-sm-offset-2">
               <h2 class="module2-title font1-alt">Our Services</h2>
             </div>
@@ -236,7 +238,7 @@
               }
             </style>
 
-            <div class="col-md-2">
+            <div class="col-md-2" data-aos="flip-left"  data-aos-delay="350"  data-aos-duration="1500">
               <div class="features-item">
                 <div class="features-icon"><span class="fas fa-search-location"></span></div>
                 <h3 class="features-title font-alt ">Central Location</h3>
@@ -246,7 +248,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2" data-aos="flip-left" data-aos-delay="350" data-aos-duration="1500">
               <div class="features-item">
                 <div class="features-icon"><span class="fas fa-bed"></span></div>
                 <h3 class="features-title font-alt">King Roooms</h3>
@@ -260,7 +262,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2" data-aos="flip-left" data-aos-delay="350" data-aos-duration="1500">
               <div class="features-item">
                 <div class="features-icon"><span class="fas fa-pizza-slice"></span></div>
                 <h3 class="features-title font-alt">Restaurant</h3>
@@ -271,7 +273,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-2 ">
+            <div class="col-md-2" data-aos="flip-left" data-aos-delay="350" data-aos-duration="1500">
               <div class="features-item">
                 <div class="features-icon"><span class="fas fa-hotel"></span></div>
                 <h3 class="features-title font-alt">Function Hall</h3>
@@ -285,7 +287,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2" data-aos="flip-left" data-aos-delay="350" data-aos-duration="1500">
               <div class="features-item">
                 <div class="features-icon"><span class="fas fa-recycle"></span></div>
                 <h3 class="features-title font-alt">Eco Friendly</h3>
@@ -296,7 +298,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2" data-aos="flip-left" data-aos-delay="350" data-aos-duration="1500">
               <div class="features-item">
                 <div class="features-icon"><span class="fas fa-leaf"></span></div>
                 <h3 class="features-title font-alt">High quality</h3>
@@ -415,7 +417,10 @@
   <script src="assets/js/main.js"></script>
   <!-- <script src="assets/js/all.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
-
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 
 </html>
