@@ -1,72 +1,61 @@
 <?php
 
-	$errors = array();
+if (isset($_POST['name'])) {
+    $name = $_POST['name']; // required
+}
+if (isset($_POST['email'])) {
+    $email = $_POST['email']; // required
+}
+if (isset($_POST['message'])) {
+    $message = $_POST['message']; // required
+}
 
-	// Check if name has been entered
-	if (!isset($_POST['name'])) {
-		$errors['name'] = 'Please enter your name';
-	}
+//Include required PHPMailer files
+require './php_mailer/PHPMailer.php';
+require './php_mailer/SMTP.php';
+require './php_mailer/Exception.php';
+//Define name spaces
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+//Create instance of PHPMailer
+$mail = new PHPMailer();
+//Set mailer to use smtp
+$mail->isSMTP();
+//Define smtp host
+$mail->Host = "smtp.gmail.com";
+//Enable smtp authentication
+$mail->SMTPAuth = true;
+//Set smtp encryption type (ssl/tls)
+$mail->SMTPSecure = "ssl";
+//Port to connect smtp
+$mail->Port = "465";
+//Set gmail username
+$mail->Username = "hotelcontact.sdu.nibm@gmail.com";
+//Set gmail password
+$mail->Password = "sdu12345";
+//Email subject
+$mail->Subject = "New Contact Request From Customer";
+//Set sender email
+$mail->setFrom('hotelcontact.sdu.nibm@gmail.com');
+//Enable HTML
+$mail->isHTML(true);
+//Attachment
+//$mail->addAttachment('img/attachment.png');
+//Email body
+$mail->Body = "<h1>New Contact Request</h1></br>
+            <p>Contact Person Email: $email</p>
+            <p>Contact Person Name: $name</p> 
+            <p>Message: $message</p>";
+//Add recipient
+$mail->addAddress($email);
+//Finally send email
+if ( $mail->send() ) {
+    echo "Email Sent..!";
+}else{
+    echo "Message could not be sent. Mailer Error: "{$mail->ErrorInfo};
+}
+//Closing smtp connection
+$mail->smtpClose();
 
-	// Check if email has been entered and is valid
-	if (!isset($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-		$errors['email'] = 'Please enter a valid email address';
-	}
-
-	//Check if message has been entered
-	if (!isset($_POST['message'])) {
-		$errors['message'] = 'Please enter your message';
-	}
-
-	$errorOutput = '';
-
-	if(!empty($errors)){
-
-		$errorOutput .= '<div class="alert alert-danger alert-dismissible" role="alert">';
- 		$errorOutput .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-
-		$errorOutput  .= '<ul>';
-
-		foreach ($errors as $key => $value) {
-			$errorOutput .= '<li>'.$value.'</li>';
-		}
-
-		$errorOutput .= '</ul>';
-		$errorOutput .= '</div>';
-
-		echo $errorOutput;
-		die();
-	}
-
-
-
-	$name = $_POST['name'];
-	$email = $_POST['email'];
-	$message = $_POST['message'];
-	$from = $email;
-	$to = 'info@example.com';  // please change this email id
-	$subject = 'Contact Form : Titan - The best downloaded template ever';
-
-	$body = "From: $name\n E-Mail: $email\n Message:\n $message";
-
-	$headers = "From: ".$from;
-
-
-	//send the email
-	$result = '';
-	if (mail ($to, $subject, $body, $headers)) {
-		$result .= '<div class="alert alert-success alert-dismissible" role="alert">';
- 		$result .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-		$result .= 'Thank You! I will be in touch';
-		$result .= '</div>';
-
-		echo $result;
-		die();
-	}
-
-	$result = '';
-	$result .= '<div class="alert alert-danger alert-dismissible" role="alert">';
-	$result .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-	$result .= 'Something bad happend during sending this message. Please try again later';
-	$result .= '</div>';
-
-	echo $result;
+?>
