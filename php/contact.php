@@ -48,7 +48,7 @@ $mail->Body = "<h1>New Contact Request</h1></br>
             <p>Contact Person Name: $name</p> 
             <p>Message: $message</p>";
 //Add recipient
-$mail->addAddress("thenukadinu@gmail.com");
+$mail->addAddress("info@fieldviewhotel.com");
 //Finally send email
 if ( $mail->send() ) {
     echo "Email Sent..!";
